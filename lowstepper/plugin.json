@@ -1,0 +1,16 @@
+{
+  "slug": "lowstepper",
+  "name": "lowstepper",
+  "version": "2.0.0",
+  "license": "proprietary",
+  "brand": "okay-synthesizer",
+  "author": "Rafael Khan",
+  "authorEmail": "",
+  "authorUrl": "https://okaysynthesizer.com/",
+  "pluginUrl": "",
+  "manualUrl": "",
+  "sourceUrl": "",
+  "donateUrl": "",
+  "changelogUrl": "",
+  "modules": []
+}
