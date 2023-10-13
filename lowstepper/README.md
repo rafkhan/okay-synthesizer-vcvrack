@@ -6,6 +6,7 @@ Within `.vscode/c_cpp_properties.json`:
 - change the field `compilerPath` to your g++ path
 
 ## Setup VSCode Tasks
+
 ### Windows
 
 Within `.vscode/tasks.json` , modify all instances of the following JSON fields:
