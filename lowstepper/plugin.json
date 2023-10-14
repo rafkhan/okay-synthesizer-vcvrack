@@ -12,5 +12,12 @@
   "sourceUrl": "",
   "donateUrl": "",
   "changelogUrl": "",
-  "modules": []
+  "modules": [
+    {
+      "slug": "TestLowstepper",
+      "name": "Test Lowstepper",
+      "description": "",
+      "tags": []
+    }
+  ]
 }
