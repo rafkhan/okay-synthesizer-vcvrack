@@ -10,14 +10,14 @@ struct LowStepperInput {
   float phase;
   float frequency; // hz
   float morph; // 0 - 1
-  float start; // 0 - 1
+  float start; // 0 - 1. Default is 0, because 0 * TWO_PI is the beginning of the sine wave
 
-  float end; // 0 - 1 
+  float end; // 0 - 1. Default is 1, because 1 * TWO_PI is the end sine wave
 
   bool shouldReset;
 
   LowStepperInput() : 
-    phase(0), frequency(0), morph(0), start(0), end(0), shouldReset(false) {}
+    phase(0), frequency(0), morph(0), start(0), end(1), shouldReset(false) {}
 };
 
 enum LowStepperLfoMode {
