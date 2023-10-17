@@ -3,7 +3,7 @@
 
 LowStepperOutput lastOutputA; // Default constructed to all fields as 0
 LowStepperLfo* lfoA = nullptr;
-float phase = 0.f;
+//float seconds = 0.f;
 
 struct TestLowstepper : Module {
 	enum ParamId {
@@ -34,38 +34,49 @@ struct TestLowstepper : Module {
 		if(lfoA == nullptr) {
 			INFO("Initializing lowstepper with sample rate of %fhz", args.sampleRate);
 			lfoA = new LowStepperLfo(args.sampleRate);
-		}		const float morphPot = getInput(PITCH_INPUT).getVoltage();
+		}		
+		
+		const float morphPot = getParam(PITCH_PARAM).getValue();
 
 		// Below here is all temporary.
 
-		// When cv is not plugged in, it has a default value of 0.5. Value must be 
-		float morphCv = getInput(PITCH_INPUT).isConnected() ? getInput(PITCH_INPUT).getVoltage() : 0.5;
-		if(morphCv > 1 || morphCv < 0) {
-			INFO("morph cv is out of range %f", morphCv);
-			morphCv = 0.5;
+		// Input voltage is +/-5V (bipolar CV). When cv is not plugged in, it has a default value of 0.
+		// https://vcvrack.com/manual/VoltageStandards
+		float morphCv = getInput(PITCH_INPUT).isConnected() ? getInput(PITCH_INPUT).getVoltage() : 0;
+		if(morphCv > 5 || morphCv < -5) {
+			INFO("morph cv is out of the range +/-5V %f", morphCv);
+			morphCv = 0;
 		}
 
 		LowStepperInput inputA;
 		inputA.phase = lastOutputA.phase;
 		inputA.frequency = LowStepperLfo::mapRateInputToFrequency(1, false, LowStepperLfoMode::MEDIUM, 120);
-		inputA.morph = LowStepperLfo::mapMorphInput(combinePotAndCv(morphPot, morphCv));
+		inputA.morph = LowStepperLfo::mapMorphInput(TestLowstepper::combinePotAndCv(morphPot, morphCv));
 		inputA.start = 0;
-		inputA.end = 0;
+		inputA.end = 1;
 		inputA.shouldReset = false;
 
 		lastOutputA = lfoA->tick(inputA);
+
+		/*seconds += args.sampleTime;
+		if(seconds >= 0.5) {
+			seconds = 0;
+			INFO("morphPot: %f", morphPot);
+			INFO("morphCv: %f", morphCv);
+			INFO("inputA.morph: %f", inputA.morph);
+		}*/
 		
-		float freq = dsp::FREQ_C4 * std::pow(2.f, inputA.morph);
-
-		// Accumulate the phase
-		phase += freq * args.sampleTime / 4.f;
-		if (phase >= 1.f)
-			phase -= 1.f;
-
-		// Compute the sine output
-		float sine = std::sin(2.f * M_PI * phase);
-		getOutput(SINE_OUTPUT).setVoltage(5.f * sine);
+		// Output must be mapped to the range of +/-5V
+		getOutput(SINE_OUTPUT).setVoltage(5.f * lastOutputA.cvOutput);
 	}
+
+	static float combinePotAndCv(const float pot, const float cv) {
+		// Expect that pot is within the range of 0-1;
+		// Expect that cv is within the range of +/-5V
+		const float adjustedCv = cv / 5.f;
+		return fmin(1, fmax(0, (pot + adjustedCv)));
+	}
+
 };
 
 
