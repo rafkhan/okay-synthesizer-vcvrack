@@ -14,8 +14,8 @@
   "changelogUrl": "",
   "modules": [
     {
-      "slug": "TestLowstepper",
-      "name": "Test Lowstepper",
+      "slug": "DebugLowstepperV5",
+      "name": "DebugLowstepperV5",
       "description": "",
       "tags": []
     }
