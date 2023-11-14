@@ -298,7 +298,7 @@ bool LowstepperRack::syncATriggerCheck()
     else {
         channelA.syncTrigger.update(channelA.syncIn.getVoltage());
     }
-    return channelA.syncTrigger.isTriggered;
+    return channelA.syncTrigger.triggerCheck();
 }
 
 bool LowstepperRack::syncBTriggerCheck()
@@ -309,7 +309,7 @@ bool LowstepperRack::syncBTriggerCheck()
     else {
         channelB.syncTrigger.update(channelB.syncIn.getVoltage());
     }
-    return channelB.syncTrigger.isTriggered;
+    return channelB.syncTrigger.triggerCheck();
 }
 
 bool LowstepperRack::resetATriggerCheck()
@@ -320,7 +320,7 @@ bool LowstepperRack::resetATriggerCheck()
     else {
         channelA.resetTrigger.update(channelA.resetIn.getVoltage());
     }
-    return channelA.resetTrigger.isTriggered;
+    return channelA.resetTrigger.triggerCheck();
 }
 
 bool LowstepperRack::resetBTriggerCheck()
@@ -331,5 +331,5 @@ bool LowstepperRack::resetBTriggerCheck()
     else {
         channelB.resetTrigger.update(channelA.resetIn.getVoltage());
     }
-    return channelB.resetTrigger.isTriggered;
+    return channelB.resetTrigger.triggerCheck();
 }
