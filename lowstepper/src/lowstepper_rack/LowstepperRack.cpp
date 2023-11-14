@@ -329,7 +329,7 @@ bool LowstepperRack::resetBTriggerCheck()
         channelB.resetTrigger.isTriggered = false;
     }
     else {
-        channelB.resetTrigger.update(channelA.resetIn.getVoltage());
+        channelB.resetTrigger.update(channelB.resetIn.getVoltage());
     }
     return channelB.resetTrigger.isTriggered;
 }
