@@ -18,7 +18,7 @@ struct Channel {
     ParamRef startKnob;
     ParamRef endKnob;
     ParamRef speedToggle;
-    LightRef led;
+    GreenRedLightRef led;
     InputRef rateCv;
     InputRef morphCv;
     InputRef startCv;
