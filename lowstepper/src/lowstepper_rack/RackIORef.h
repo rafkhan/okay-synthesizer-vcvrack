@@ -38,8 +38,10 @@ struct LightRef {
 };
 
 struct InputTrigger {
+    bool isGateHigh;
     bool isTriggered;
 
-    InputTrigger() : isTriggered(false) {}
+    InputTrigger() : isTriggered(false), isGateHigh(false) {}
     void update(float voltage);
+    bool triggerCheck();
 };
