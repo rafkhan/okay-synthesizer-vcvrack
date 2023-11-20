@@ -38,8 +38,8 @@ struct DebugLowstepperV5 : Module {
 		OUTPUTS_LEN
 	};
 	enum LightId {
-		LED_A_LIGHT,
-		LED_B_LIGHT,
+		ENUMS(LED_A_LIGHT, 2),
+		ENUMS(LED_B_LIGHT, 2),
 		LIGHTS_LEN
 	};
 
@@ -83,7 +83,7 @@ struct DebugLowstepperV5 : Module {
 			lowstepper->bindStartKnob(ChannelId::A, &getParam(START_KNOB_A_PARAM));
 			lowstepper->bindEndKnob(ChannelId::A, &getParam(END_KNOB_A_PARAM));
 			lowstepper->bindSpeedToggle(ChannelId::A, &getParam(SPEED_TOGGLE_A_PARAM));
-			lowstepper->bindLed(ChannelId::A, &getLight(LED_A_LIGHT));
+			lowstepper->bindLed(ChannelId::A, &getLight(LED_A_LIGHT + 0), &getLight(LED_A_LIGHT + 1));
 			lowstepper->bindRateCv(ChannelId::A, &getInput(RATE_CV_A_INPUT));
 			lowstepper->bindMorphCv(ChannelId::A, &getInput(MORPH_CV_A_INPUT));
 			lowstepper->bindStartCv(ChannelId::A, &getInput(START_CV_A_INPUT));
@@ -98,7 +98,7 @@ struct DebugLowstepperV5 : Module {
 			lowstepper->bindStartKnob(ChannelId::B, &getParam(START_KNOB_B_PARAM));
 			lowstepper->bindEndKnob(ChannelId::B, &getParam(END_KNOB_B_PARAM));
 			lowstepper->bindSpeedToggle(ChannelId::B, &getParam(SPEED_TOGGLE_B_PARAM));
-			lowstepper->bindLed(ChannelId::B, &getLight(LED_B_LIGHT));
+			lowstepper->bindLed(ChannelId::B, &getLight(LED_B_LIGHT + 0), &getLight(LED_B_LIGHT + 1));
 			lowstepper->bindRateCv(ChannelId::B, &getInput(RATE_CV_B_INPUT));
 			lowstepper->bindMorphCv(ChannelId::B, &getInput(MORPH_CV_B_INPUT));
 			lowstepper->bindStartCv(ChannelId::B, &getInput(START_CV_B_INPUT));
@@ -155,8 +155,8 @@ struct DebugLowstepperV5Widget : ModuleWidget {
 		addOutput(createOutputCentered<PJ301MPort>(mm2px(Vec(50.486, 115.745)), module, DebugLowstepperV5::CV_OUT_B_OUTPUT));
 		addOutput(createOutputCentered<PJ301MPort>(mm2px(Vec(69.432, 115.67)), module, DebugLowstepperV5::EOC_OUT_B_OUTPUT));
 
-		addChild(createLightCentered<MediumLight<RedLight>>(mm2px(Vec(12.047, 79.481)), module, DebugLowstepperV5::LED_A_LIGHT));
-		addChild(createLightCentered<MediumLight<RedLight>>(mm2px(Vec(69.354, 79.737)), module, DebugLowstepperV5::LED_B_LIGHT));
+		addChild(createLightCentered<MediumLight<GreenRedLight>>(mm2px(Vec(12.047, 79.481)), module, DebugLowstepperV5::LED_A_LIGHT));
+		addChild(createLightCentered<MediumLight<GreenRedLight>>(mm2px(Vec(69.354, 79.737)), module, DebugLowstepperV5::LED_B_LIGHT));
 	}
 };
 

@@ -57,13 +57,15 @@ void LowstepperRack::bindSpeedToggle(ChannelId id, rack::engine::Param *param)
     }
 }
 
-void LowstepperRack::bindLed(ChannelId id, rack::engine::Light *light)
+void LowstepperRack::bindLed(ChannelId id, rack::engine::Light* greenLight, rack::engine::Light* redLight)
 {
     if(id == ChannelId::A) {
-        channelA.led.light = light;
+        channelA.led.greenLight = greenLight;
+        channelA.led.redLight = redLight;
     }
     else {
-        channelB.led.light = light;
+        channelB.led.greenLight = greenLight;
+        channelB.led.redLight = redLight;
     }
 }
 
@@ -193,9 +195,18 @@ void LowstepperRack::tick(const rack::engine::Module::ProcessArgs &args)
 
     channelA.cvOut.setVolage(5.f * channelA.lastOutput.cvOutput);
     channelB.cvOut.setVolage(5.f * channelB.lastOutput.cvOutput);
-    
-    channelA.led.setBrightness((channelA.lastOutput.cvOutput + 1.f) / 2.f);
-    channelB.led.setBrightness((channelB.lastOutput.cvOutput + 1.f) / 2.f);
+
+    const float aCvOutGreenBrightness = (channelA.lastOutput.cvOutput + 1.f) / 2.f;
+    const float aCvOutRedBrightness = 1.f - aCvOutGreenBrightness;
+
+    const float bCvOutGreenBrightness = (channelB.lastOutput.cvOutput + 1.f) / 2.f;
+    const float bCvOutRedBrightness = 1.f - bCvOutGreenBrightness;
+
+    channelA.led.setRedBrightness(aCvOutRedBrightness);
+    channelA.led.setGreenBrightness(aCvOutGreenBrightness);
+
+    channelB.led.setRedBrightness(bCvOutRedBrightness);
+    channelB.led.setGreenBrightness(bCvOutGreenBrightness);
 }
 
 // pot = knob

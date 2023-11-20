@@ -40,16 +40,15 @@ void OutputRef::setVolage(float voltage)
     output->setVoltage(voltage);
 }
 
-float LightRef::getBrightness()
+void GreenRedLightRef::setRedBrightness(float brightness) 
 {
-    return light->getBrightness();
+    redLight->setBrightness(brightness);
 }
 
-void LightRef::setBrightness(float brightness)
+void GreenRedLightRef::setGreenBrightness(float brightness)
 {
-    light->setBrightness(brightness);
+    greenLight->setBrightness(brightness);
 }
-
 
 void InputTrigger::update(float voltage)
 {

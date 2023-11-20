@@ -13,7 +13,7 @@ public:
     void bindStartKnob(ChannelId id, rack::engine::Param* param);
     void bindEndKnob(ChannelId id, rack::engine::Param* param);
     void bindSpeedToggle(ChannelId id, rack::engine::Param* param);
-    void bindLed(ChannelId id, rack::engine::Light* light);
+    void bindLed(ChannelId id, rack::engine::Light* greenLight, rack::engine::Light* redLight);
     void bindRateCv(ChannelId id, rack::engine::Input* input);
     void bindMorphCv(ChannelId id, rack::engine::Input* input);
     void bindStartCv(ChannelId id, rack::engine::Input* input);
