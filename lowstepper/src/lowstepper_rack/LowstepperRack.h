@@ -5,7 +5,6 @@
 
 class LowstepperRack {
 public:
-
     LowstepperRack(float sampleRate);
 
     void bindRateKnob(ChannelId id, rack::engine::Param* param);
@@ -26,7 +25,6 @@ public:
     void tick(const rack::engine::Module::ProcessArgs& args);
 
 private:
-
     static float combinePotAndCv(float pot, float cv);
 
     float getRateAInput();
@@ -47,7 +45,6 @@ private:
 
     bool resetATriggerCheck();
     bool resetBTriggerCheck();
-
 private:
 
     Channel channelA;

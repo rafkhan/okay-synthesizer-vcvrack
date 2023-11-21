@@ -31,6 +31,10 @@ struct Channel {
     InputTrigger resetTrigger;
 
     Channel(float sampleRate);
+
+    // TODO make a better abstraction for this
+    void tickEoc();
     bool eocHigh = false;
     int eocSampleTime = 0;
+    float eocVoltageOutput = 0.f;
 };
