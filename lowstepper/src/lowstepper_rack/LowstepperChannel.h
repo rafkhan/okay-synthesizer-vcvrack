@@ -31,4 +31,6 @@ struct Channel {
     InputTrigger resetTrigger;
 
     Channel(float sampleRate);
+    bool eocHigh = false;
+    int eocSampleTime = 0;
 };

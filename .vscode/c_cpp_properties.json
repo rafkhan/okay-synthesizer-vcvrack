@@ -16,6 +16,22 @@
             "cStandard": "c11",
             "cppStandard": "c++11",
             "intelliSenseMode": "gcc-x64"
+        },
+        {
+            "name": "Mac",
+            "includePath": [
+                "${workspaceFolder}/../Rack-SDK/include/**",
+                "${workspaceFolder}/../Rack-SDK/dep/**"
+            ],
+            "defines": [
+                "_DEBUG",
+                "UNICODE",
+                "_UNICODE"
+            ],
+            "compilerPath": "/usr/bin/g++",
+            "cStandard": "c11",
+            "cppStandard": "c++11",
+            "intelliSenseMode": "gcc-x64"
         }
     ],
     "version": 4

@@ -177,8 +177,20 @@ void LowstepperRack::tick(const rack::engine::Module::ProcessArgs &args)
     channelB.lastOutput = channelB.lfo.tick(inputB);
 
     const float eocHighOutVoltage = 10.f;
+
+
     if(channelA.lastOutput.eocGateHigh) {
+        channelA.eocHigh = true;
+    }
+
+    if(channelA.eocSampleTime > 1000) {
+        channelA.eocSampleTime = 0;
+        channelA.eocHigh = false;
+    }
+
+    if(channelA.eocHigh) {
 		channelA.eocOut.setVolage(eocHighOutVoltage);
+        channelA.eocSampleTime++;
 	}
     else {
         channelA.eocOut.setVolage(0);

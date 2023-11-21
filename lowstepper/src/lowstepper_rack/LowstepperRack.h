@@ -48,7 +48,6 @@ private:
     bool resetATriggerCheck();
     bool resetBTriggerCheck();
 
-
 private:
 
     Channel channelA;

@@ -6,7 +6,7 @@ SyncManager::SyncManager() {}
 
 bool SyncManager::tick(bool isGateHigh) {
   if(isGateHigh) {
-    float bpm = 60.0f / ((samplesSinceLastSyncTick + 1.0f) * (1.0f / sampleRate)) / 4;
+    float bpm = 60.0f / ((samplesSinceLastSyncTick + 1.0f) * (1.0f / sampleRate)) / 4.f;
     bpmAverage->addValue(bpm);
     samplesSinceLastSyncTick = 0;
     useSync = true;
@@ -24,7 +24,7 @@ bool SyncManager::tick(bool isGateHigh) {
 
 void SyncManager::init(float sampleRate) {
   this->sampleRate = sampleRate;
-  AverageBuffer<float>* buf = new AverageBuffer<float>((size_t) 4, sampleRate / 120.0f); // Use a reasonable starting BPM
+  AverageBuffer<float>* buf = new AverageBuffer<float>((uint32_t) 4, sampleRate / 120.0f); // Use a reasonable starting BPM
   this->bpmAverage = buf;
 }
 
