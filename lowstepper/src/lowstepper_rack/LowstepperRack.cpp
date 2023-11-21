@@ -178,24 +178,15 @@ void LowstepperRack::tick(const rack::engine::Module::ProcessArgs &args)
     channelA.lastOutput = channelA.lfo.tick(inputA);
     channelB.lastOutput = channelB.lfo.tick(inputB);
 
-    const float eocHighOutVoltage = 10.f;
-    if(channelA.lastOutput.eocGateHigh) {
-		channelA.eocOut.setVolage(eocHighOutVoltage);
-	}
-    else {
-        channelA.eocOut.setVolage(0);
-    }
-
-	if(channelB.lastOutput.eocGateHigh) {
-		channelB.eocOut.setVolage(eocHighOutVoltage);
-	}
-    else {
-        channelB.eocOut.setVolage(0);
-    }
-
     channelA.cvOut.setVolage(5.f * channelA.lastOutput.cvOutput);
     channelB.cvOut.setVolage(5.f * channelB.lastOutput.cvOutput);
 
+    // Holding state is bad.
+    channelA.tickEoc();
+    channelB.tickEoc();
+	channelA.eocOut.setVolage(channelA.eocVoltageOutput);
+	channelB.eocOut.setVolage(channelB.eocVoltageOutput);
+    
     const float aCvOutGreenBrightness = (channelA.lastOutput.cvOutput + 1.f) / 2.f;
     const float aCvOutRedBrightness = 1.f - aCvOutGreenBrightness;
 

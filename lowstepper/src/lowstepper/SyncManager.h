@@ -2,7 +2,6 @@
 #define SYNC_MANAGER_H
 
 #include "AverageBuffer.h"
-#include <cstddef>
 
 class SyncManager
 {
