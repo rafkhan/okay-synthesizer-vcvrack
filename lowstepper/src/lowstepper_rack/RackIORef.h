@@ -29,17 +29,20 @@ struct OutputRef {
     void setVolage(float voltage);
 };
 
-struct LightRef {
-    rack::engine::Light* light;
+struct GreenRedLightRef {
+    rack::engine::Light* redLight;
+    rack::engine::Light* greenLight;
 
-    LightRef() : light(nullptr) {}
-    float getBrightness();
-    void setBrightness(float brightness);
+    GreenRedLightRef() : redLight(nullptr), greenLight(nullptr) {}
+    void setRedBrightness(float brightness);
+    void setGreenBrightness(float brightness);
 };
 
 struct InputTrigger {
+    bool isGateHigh;
     bool isTriggered;
 
-    InputTrigger() : isTriggered(false) {}
+    InputTrigger() : isTriggered(false), isGateHigh(false) {}
     void update(float voltage);
+    bool triggerCheck();
 };

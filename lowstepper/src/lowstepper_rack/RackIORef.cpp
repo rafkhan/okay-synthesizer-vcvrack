@@ -40,30 +40,39 @@ void OutputRef::setVolage(float voltage)
     output->setVoltage(voltage);
 }
 
-float LightRef::getBrightness()
+void GreenRedLightRef::setRedBrightness(float brightness) 
 {
-    return light->getBrightness();
+    redLight->setBrightness(brightness);
 }
 
-void LightRef::setBrightness(float brightness)
+void GreenRedLightRef::setGreenBrightness(float brightness)
 {
-    light->setBrightness(brightness);
+    greenLight->setBrightness(brightness);
 }
-
 
 void InputTrigger::update(float voltage)
 {
     const float HIGH = 2.f;
     const float CUTOFF = 0.1f;
 
-    if(isTriggered) {
+    if(isGateHigh) {
         if(voltage <= CUTOFF) {
-            isTriggered = false;
+            isGateHigh = false;
         }
     }
     else {
-        if(voltage >= HIGH) {
+        if(voltage >= HIGH && !isGateHigh) {
+            isGateHigh = true;
             isTriggered = true;
         }
     }
+}
+
+bool InputTrigger::triggerCheck()
+{
+    if(isTriggered) {
+        isTriggered = false;
+        return true;
+    }
+    return false;
 }
