@@ -1,7 +1,10 @@
 #include "plugin.hpp"
 #include "lowstepper_rack/LowstepperRack.h"
 
+
 struct DebugLowstepperV5 : Module {
+	LowstepperRack* lowstepper;
+	
 	enum ParamId {
 		RATE_KNOB_A_PARAM,
 		RATE_KNOB_B_PARAM,
@@ -44,7 +47,7 @@ struct DebugLowstepperV5 : Module {
 	};
 
 	DebugLowstepperV5() {
-		config(PARAMS_LEN, INPUTS_LEN, OUTPUTS_LEN, LIGHTS_LEN);
+	    config(PARAMS_LEN, INPUTS_LEN, OUTPUTS_LEN, LIGHTS_LEN);
 		configParam(RATE_KNOB_A_PARAM, 0.f, 1.f, 0.f, namesChannelA::rateKnob);
 		configParam(RATE_KNOB_B_PARAM, 0.f, 1.f, 0.f, namesChannelB::rateKnob);
 		configParam(MORPH_KNOB_A_PARAM, 0.f, 1.f, 0.f, namesChannelA::morphKnob);
@@ -75,7 +78,7 @@ struct DebugLowstepperV5 : Module {
 	}
 
 	void process(const ProcessArgs& args) override {
-		if(lowstepper == nullptr) {
+	    if(lowstepper == nullptr) {
 			lowstepper = new LowstepperRack(args.sampleRate);
 
 			lowstepper->bindRateKnob(ChannelId::A, &getParam(RATE_KNOB_A_PARAM));
@@ -111,8 +114,6 @@ struct DebugLowstepperV5 : Module {
 
 		lowstepper->tick(args);
 	}
-
-	LowstepperRack* lowstepper;
 };
 
 
@@ -134,8 +135,8 @@ struct DebugLowstepperV5Widget : ModuleWidget {
 		addParam(createParamCentered<RoundBlackKnob>(mm2px(Vec(69.213, 46.084)), module, DebugLowstepperV5::START_KNOB_B_PARAM));
 		addParam(createParamCentered<RoundBlackKnob>(mm2px(Vec(12.467, 62.865)), module, DebugLowstepperV5::END_KNOB_A_PARAM));
 		addParam(createParamCentered<RoundBlackKnob>(mm2px(Vec(69.361, 63.033)), module, DebugLowstepperV5::END_KNOB_B_PARAM));
-		addParam(createParamCentered<RoundBlackKnob>(mm2px(Vec(28.195, 79.197)), module, DebugLowstepperV5::SPEED_TOGGLE_A_PARAM));
-		addParam(createParamCentered<RoundBlackKnob>(mm2px(Vec(53.908, 79.245)), module, DebugLowstepperV5::SPEED_TOGGLE_B_PARAM));
+		addParam(createParamCentered<RoundBlackKnob>(mm2px(Vec(29.49, 110.657)), module, DebugLowstepperV5::SPEED_TOGGLE_A_PARAM));
+		addParam(createParamCentered<RoundBlackKnob>(mm2px(Vec(55.202, 110.705)), module, DebugLowstepperV5::SPEED_TOGGLE_B_PARAM));
 
 		addInput(createInputCentered<PJ301MPort>(mm2px(Vec(28.0, 13.614)), module, DebugLowstepperV5::RATE_CV_A_INPUT));
 		addInput(createInputCentered<PJ301MPort>(mm2px(Vec(53.903, 13.465)), module, DebugLowstepperV5::RATE_CV_B_INPUT));
@@ -145,18 +146,18 @@ struct DebugLowstepperV5Widget : ModuleWidget {
 		addInput(createInputCentered<PJ301MPort>(mm2px(Vec(53.974, 46.263)), module, DebugLowstepperV5::START_CV_B_INPUT));
 		addInput(createInputCentered<PJ301MPort>(mm2px(Vec(53.737, 62.72)), module, DebugLowstepperV5::END_CV_B_INPUT));
 		addInput(createInputCentered<PJ301MPort>(mm2px(Vec(28.126, 63.057)), module, DebugLowstepperV5::END_CV_A_INPUT));
-		addInput(createInputCentered<PJ301MPort>(mm2px(Vec(12.85, 97.179)), module, DebugLowstepperV5::SYNC_IN_A_INPUT));
-		addInput(createInputCentered<PJ301MPort>(mm2px(Vec(31.376, 97.311)), module, DebugLowstepperV5::RESET_IN_A_INPUT));
-		addInput(createInputCentered<PJ301MPort>(mm2px(Vec(69.372, 96.964)), module, DebugLowstepperV5::RESET_IN_B_INPUT));
-		addInput(createInputCentered<PJ301MPort>(mm2px(Vec(50.577, 97.263)), module, DebugLowstepperV5::SYNC_IN_B_INPUT));
+		addInput(createInputCentered<PJ301MPort>(mm2px(Vec(13.706, 139.859)), module, DebugLowstepperV5::SYNC_IN_A_INPUT));
+		addInput(createInputCentered<PJ301MPort>(mm2px(Vec(32.233, 139.991)), module, DebugLowstepperV5::RESET_IN_A_INPUT));
+		addInput(createInputCentered<PJ301MPort>(mm2px(Vec(70.229, 139.643)), module, DebugLowstepperV5::RESET_IN_B_INPUT));
+		addInput(createInputCentered<PJ301MPort>(mm2px(Vec(51.434, 139.943)), module, DebugLowstepperV5::SYNC_IN_B_INPUT));
 
-		addOutput(createOutputCentered<PJ301MPort>(mm2px(Vec(12.45, 115.259)), module, DebugLowstepperV5::CV_OUT_A_OUTPUT));
-		addOutput(createOutputCentered<PJ301MPort>(mm2px(Vec(31.269, 115.526)), module, DebugLowstepperV5::EOC_OUT_A_OUTPUT));
-		addOutput(createOutputCentered<PJ301MPort>(mm2px(Vec(50.486, 115.745)), module, DebugLowstepperV5::CV_OUT_B_OUTPUT));
-		addOutput(createOutputCentered<PJ301MPort>(mm2px(Vec(69.432, 115.67)), module, DebugLowstepperV5::EOC_OUT_B_OUTPUT));
+		addOutput(createOutputCentered<PJ301MPort>(mm2px(Vec(13.613, 155.071)), module, DebugLowstepperV5::CV_OUT_A_OUTPUT));
+		addOutput(createOutputCentered<PJ301MPort>(mm2px(Vec(32.432, 155.338)), module, DebugLowstepperV5::EOC_OUT_A_OUTPUT));
+		addOutput(createOutputCentered<PJ301MPort>(mm2px(Vec(51.649, 155.557)), module, DebugLowstepperV5::CV_OUT_B_OUTPUT));
+		addOutput(createOutputCentered<PJ301MPort>(mm2px(Vec(70.595, 155.482)), module, DebugLowstepperV5::EOC_OUT_B_OUTPUT));
 
-		addChild(createLightCentered<MediumLight<GreenRedLight>>(mm2px(Vec(12.047, 79.481)), module, DebugLowstepperV5::LED_A_LIGHT));
-		addChild(createLightCentered<MediumLight<GreenRedLight>>(mm2px(Vec(69.354, 79.737)), module, DebugLowstepperV5::LED_B_LIGHT));
+		addChild(createLightCentered<MediumLight<GreenRedLight>>(mm2px(Vec(13.342, 110.941)), module, DebugLowstepperV5::LED_A_LIGHT));
+		addChild(createLightCentered<MediumLight<GreenRedLight>>(mm2px(Vec(70.649, 111.197)), module, DebugLowstepperV5::LED_B_LIGHT));
 	}
 };
 
