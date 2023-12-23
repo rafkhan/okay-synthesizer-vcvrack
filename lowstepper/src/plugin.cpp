@@ -6,10 +6,9 @@ Plugin* pluginInstance;
 
 void init(Plugin* p) {
 	pluginInstance = p;
-
-	// Add modules here
-    p->addModel(modelDebugLowstepperV5);
-	INFO("loaded debug lowstepper v5");
+	
+	p->addModel(modelDebugLowstepperV7);
+	INFO("loaded debug lowstepper v7");
 
 	// Any other plugin initialization may go here.
 	// As an alternative, consider lazy-loading assets and lookup tables when your module is created to reduce startup times of Rack.
