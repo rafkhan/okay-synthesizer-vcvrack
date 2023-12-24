@@ -1,4 +1,4 @@
-#include "plugin.hpp"
+#include "../plugin.hpp"
 #include "lowstepper/LowStepperLfo.h"
 
 LowStepperOutput lastOutputA; // Default constructed to all fields as 0
