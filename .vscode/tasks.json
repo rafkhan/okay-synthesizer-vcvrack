@@ -8,7 +8,7 @@
         "type": "shell",
         "command": "make install",
         "options": {
-          "cwd": "${workspaceRoot}/lowstepper",
+          "cwd": "${workspaceRoot}/OkaySynthesizer",
           "env":{
               "PATH": "C:/msys64/usr/bin/;C:/msys64/mingw64/bin",
               "RACK_DIR": "C:/Users/Admin/Documents/Code/Rack-SDK"
@@ -42,7 +42,7 @@
         "type": "shell",
         "command": "make install",
         "options": {
-          "cwd": "${workspaceRoot}/lowstepper",
+          "cwd": "${workspaceRoot}/OkaySynthesizer",
           "env":{
               "PATH": "/usr/bin",
               "RACK_DIR": "${workspaceRoot}/../Rack-SDK"

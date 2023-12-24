@@ -13,15 +13,15 @@ LDFLAGS +=
 # Add .cpp files to the build
 SOURCES += $(wildcard src/*.cpp)
 
-SOURCES += src/lowstepper/AverageBuffer.cpp
-SOURCES += src/lowstepper/LowStepperLfo.cpp
-SOURCES += src/lowstepper/SyncManager.cpp
-SOURCES += src/lowstepper/util.cpp
+SOURCES += src/lowstepper/lowstepper/AverageBuffer.cpp
+SOURCES += src/lowstepper/lowstepper/LowStepperLfo.cpp
+SOURCES += src/lowstepper/lowstepper/SyncManager.cpp
+SOURCES += src/lowstepper/lowstepper/util.cpp
 
-SOURCES += src/lowstepper_rack/LowstepperChannel.cpp
-SOURCES += src/lowstepper_rack/LowstepperRack.cpp
-SOURCES += src/lowstepper_rack/Names.cpp
-SOURCES += src/lowstepper_rack/RackIORef.cpp
+SOURCES += src/lowstepper/lowstepper_rack/LowstepperChannel.cpp
+SOURCES += src/lowstepper/lowstepper_rack/LowstepperRack.cpp
+SOURCES += src/lowstepper/lowstepper_rack/Names.cpp
+SOURCES += src/lowstepper/lowstepper_rack/RackIORef.cpp
 
 # Add files to the ZIP package when running `make dist`
 # The compiled plugin and "plugin.json" are automatically added.

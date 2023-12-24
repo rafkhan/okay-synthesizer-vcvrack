@@ -1,6 +1,6 @@
 {
-  "slug": "lowstepper",
-  "name": "lowstepper",
+  "slug": "OkaySynthesizer",
+  "name": "Okay Synthesizer",
   "version": "2.0.0",
   "license": "proprietary",
   "brand": "okay-synthesizer",
@@ -16,6 +16,12 @@
     {
       "slug": "DebugLowstepperV7",
       "name": "DebugLowstepperV7",
+      "description": "",
+      "tags": []
+    },
+    {
+      "slug": "discomfort",
+      "name": "discomfort",
       "description": "",
       "tags": []
     }
