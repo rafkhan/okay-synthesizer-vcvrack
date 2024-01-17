@@ -1,6 +1,6 @@
 #include "plugin.hpp"
 #include "lowstepper_rack/LowstepperRack.h"
-
+#include "lowstepper_rack/RackIORef.h"
 
 struct DebugLowstepperV7 : Module {
 	LowstepperRack* lowstepper;
@@ -138,23 +138,23 @@ struct DebugLowstepperV7Widget : ModuleWidget {
 		addParam(createParamCentered<RoundBlackKnob>(mm2px(Vec(16.154, 88.702)), module, DebugLowstepperV7::SPEED_TOGGLE_A_PARAM));
 		addParam(createParamCentered<RoundBlackKnob>(mm2px(Vec(34.956, 88.736)), module, DebugLowstepperV7::SPEED_TOGGLE_B_PARAM));
 
-		addInput(createInputCentered<PJ301MPort>(mm2px(Vec(15.818, 20.79)), module, DebugLowstepperV7::RATE_CV_A_INPUT));
-		addInput(createInputCentered<PJ301MPort>(mm2px(Vec(34.006, 20.687)), module, DebugLowstepperV7::RATE_CV_B_INPUT));
-		addInput(createInputCentered<PJ301MPort>(mm2px(Vec(15.7, 32.332)), module, DebugLowstepperV7::MORPH_CV_A_INPUT));
-		addInput(createInputCentered<PJ301MPort>(mm2px(Vec(34.0, 32.311)), module, DebugLowstepperV7::MORPH_CV_B_INPUT));
-		addInput(createInputCentered<PJ301MPort>(mm2px(Vec(15.561, 43.795)), module, DebugLowstepperV7::START_CV_A_INPUT));
-		addInput(createInputCentered<PJ301MPort>(mm2px(Vec(34.057, 43.639)), module, DebugLowstepperV7::START_CV_B_INPUT));
-		addInput(createInputCentered<PJ301MPort>(mm2px(Vec(33.884, 55.156)), module, DebugLowstepperV7::END_CV_B_INPUT));
-		addInput(createInputCentered<PJ301MPort>(mm2px(Vec(15.911, 55.392)), module, DebugLowstepperV7::END_CV_A_INPUT));
-		addInput(createInputCentered<PJ301MPort>(mm2px(Vec(4.612, 107.021)), module, DebugLowstepperV7::SYNC_IN_A_INPUT));
-		addInput(createInputCentered<PJ301MPort>(mm2px(Vec(18.159, 107.113)), module, DebugLowstepperV7::RESET_IN_A_INPUT));
-		addInput(createInputCentered<PJ301MPort>(mm2px(Vec(45.944, 106.87)), module, DebugLowstepperV7::RESET_IN_B_INPUT));
-		addInput(createInputCentered<PJ301MPort>(mm2px(Vec(32.2, 107.08)), module, DebugLowstepperV7::SYNC_IN_B_INPUT));
+		addInput(createInputCentered<GoldPort>(mm2px(Vec(15.818, 20.79)), module, DebugLowstepperV7::RATE_CV_A_INPUT));
+		addInput(createInputCentered<PurplePort>(mm2px(Vec(34.006, 20.687)), module, DebugLowstepperV7::RATE_CV_B_INPUT));
+		addInput(createInputCentered<GoldPort>(mm2px(Vec(15.7, 32.332)), module, DebugLowstepperV7::MORPH_CV_A_INPUT));
+		addInput(createInputCentered<PurplePort>(mm2px(Vec(34.0, 32.311)), module, DebugLowstepperV7::MORPH_CV_B_INPUT));
+		addInput(createInputCentered<GoldPort>(mm2px(Vec(15.561, 43.795)), module, DebugLowstepperV7::START_CV_A_INPUT));
+		addInput(createInputCentered<PurplePort>(mm2px(Vec(34.057, 43.639)), module, DebugLowstepperV7::START_CV_B_INPUT));
+		addInput(createInputCentered<PurplePort>(mm2px(Vec(33.884, 55.156)), module, DebugLowstepperV7::END_CV_B_INPUT));
+		addInput(createInputCentered<GoldPort>(mm2px(Vec(15.911, 55.392)), module, DebugLowstepperV7::END_CV_A_INPUT));
+		addInput(createInputCentered<GoldPort>(mm2px(Vec(4.612, 107.021)), module, DebugLowstepperV7::SYNC_IN_A_INPUT));
+		addInput(createInputCentered<GoldPort>(mm2px(Vec(18.159, 107.113)), module, DebugLowstepperV7::RESET_IN_A_INPUT));
+		addInput(createInputCentered<PurplePort>(mm2px(Vec(45.944, 106.87)), module, DebugLowstepperV7::RESET_IN_B_INPUT));
+		addInput(createInputCentered<PurplePort>(mm2px(Vec(32.2, 107.08)), module, DebugLowstepperV7::SYNC_IN_B_INPUT));
 
-		addOutput(createOutputCentered<PJ301MPort>(mm2px(Vec(4.544, 117.666)), module, DebugLowstepperV7::CV_OUT_A_OUTPUT));
-		addOutput(createOutputCentered<PJ301MPort>(mm2px(Vec(18.305, 117.853)), module, DebugLowstepperV7::EOC_OUT_A_OUTPUT));
-		addOutput(createOutputCentered<PJ301MPort>(mm2px(Vec(32.358, 118.007)), module, DebugLowstepperV7::CV_OUT_B_OUTPUT));
-		addOutput(createOutputCentered<PJ301MPort>(mm2px(Vec(46.212, 117.954)), module, DebugLowstepperV7::EOC_OUT_B_OUTPUT));
+		addOutput(createOutputCentered<GoldPort>(mm2px(Vec(4.544, 117.666)), module, DebugLowstepperV7::CV_OUT_A_OUTPUT));
+		addOutput(createOutputCentered<GoldPort>(mm2px(Vec(18.305, 117.853)), module, DebugLowstepperV7::EOC_OUT_A_OUTPUT));
+		addOutput(createOutputCentered<PurplePort>(mm2px(Vec(32.358, 118.007)), module, DebugLowstepperV7::CV_OUT_B_OUTPUT));
+		addOutput(createOutputCentered<PurplePort>(mm2px(Vec(46.212, 117.954)), module, DebugLowstepperV7::EOC_OUT_B_OUTPUT));
 
 		addChild(createLightCentered<MediumLight<GreenRedLight>>(mm2px(Vec(4.346, 88.901)), module, DebugLowstepperV7::LED_A_LIGHT));
 		addChild(createLightCentered<MediumLight<GreenRedLight>>(mm2px(Vec(46.251, 89.08)), module, DebugLowstepperV7::LED_B_LIGHT));

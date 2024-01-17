@@ -1,6 +1,17 @@
 #pragma once
 
+// gold hex:    FFD700
+// purple hex:  6E1DA4
+
 #include <rack.hpp>
+
+struct GoldPort : rack::app::SvgPort {
+	GoldPort();
+};
+
+struct PurplePort : rack::app::SvgPort {
+	PurplePort();
+};
 
 struct ParamRef {
     rack::engine::Param* param;
