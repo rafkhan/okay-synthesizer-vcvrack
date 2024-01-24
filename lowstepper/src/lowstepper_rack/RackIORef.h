@@ -2,6 +2,25 @@
 
 #include <rack.hpp>
 
+struct SlowMedFastSwitch : rack::app::SvgKnob {
+    // copied from src/lowstepper/LowStepperLfo.h
+    enum LowStepperLfoMode {
+        SLOW,
+        MEDIUM,
+        FAST
+    };
+
+    SlowMedFastSwitch();
+
+    void onChange(const ChangeEvent& e) override;
+
+
+    std::shared_ptr<rack::window::Svg> slowSvg;
+    std::shared_ptr<rack::window::Svg> mediumSvg;
+    std::shared_ptr<rack::window::Svg> fastSvg;
+    LowStepperLfoMode currentMode;
+};
+
 struct ParamRef {
     rack::engine::Param* param;
 
