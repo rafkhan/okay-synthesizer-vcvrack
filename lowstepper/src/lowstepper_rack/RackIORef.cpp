@@ -11,7 +11,7 @@ SlowMedFastSwitch::SlowMedFastSwitch()
     // Load shared_ptr svgs from plugin resources
     // https://github.com/VCVRack/Rack/blob/v2/src/app/SvgKnob.cpp
 
-    this->slowSvg = rack::Svg::load(rack::asset::plugin(pluginInstance, "res/3-way-switch-slow.svg"));
+    this->slowSvg = rack::Svg::load(rack::asset::plugin(pluginInstance, "res/3-way-switch-slow-alt.svg"));
     this->mediumSvg = rack::Svg::load(rack::asset::plugin(pluginInstance, "res/3-way-switch-medium.svg"));
     this->fastSvg = rack::Svg::load(rack::asset::plugin(pluginInstance, "res/3-way-switch-fast.svg"));
 
@@ -20,17 +20,30 @@ SlowMedFastSwitch::SlowMedFastSwitch()
     this->minAngle = -M_PI_2;
     this->maxAngle = M_PI_2;
 
+    this->fb = new rack::widget::FramebufferWidget;
+    addChild(fb);
+
+    this->sw = new rack::widget::SvgWidget;
+    this->fb->addChild(this->sw);
+
 	setSvg(this->mediumSvg);
+}
+
+void SlowMedFastSwitch::setSvg(std::shared_ptr<rack::window::Svg> svg) {
+    if(svg == this->sw->svg) 
+        return;
+
+    this->sw->setSvg(svg);
+    this->fb->box.size = sw->box.size;
+    this->box.size = sw->box.size;
+
+    this->fb->setDirty();
 }
 
 void SlowMedFastSwitch::onChange(const ChangeEvent &e)
 {
     // https://github.com/VCVRack/Rack/blob/8c6f41b778b4bf8860b89b36d5503fd37924077f/src/app/SvgKnob.cpp#L40
-    //SvgKnob::onChange(e);
 
-    float angle = 0.f;
-
-	// Calculate angle from value
 	rack::engine::ParamQuantity* pq = getParamQuantity();
     if(pq) {
 		float value = pq->getValue();
@@ -48,35 +61,12 @@ void SlowMedFastSwitch::onChange(const ChangeEvent &e)
         }
     }
 
+	this->fb->setDirty();
 
-	// if (pq) {
-	// 	float value = pq->getValue();
-	// 	if (!pq->isBounded()) {
-	// 		// Number of rotations equals value for unbounded range
-	// 		angle = value * (2 * M_PI);
-	// 	}
-	// 	else if (pq->getRange() == 0.f) {
-	// 		// Center angle for zero range
-	// 		angle = (minAngle + maxAngle) / 2.f;
-	// 	}
-	// 	else {
-	// 		// Proportional angle for finite range
-	// 		angle = rack::math::rescale(value, pq->getMinValue(), pq->getMaxValue(), minAngle, maxAngle);
-	// 	}
-	// 	angle = std::fmod(angle, 2 * M_PI);
-	// }
-
-	//tw->identity();
-	// Rotate SVG
-	//math::Vec center = sw->box.getCenter();
-	// tw->translate(center);
-	// tw->rotate(angle);
-	//tw->translate(center.neg());
-	fb->setDirty();
-
+    // Call this as parent
 	Knob::onChange(e);
 
-    INFO("on change!");
+    //INFO("on change!");
 }
 
 float ParamRef::getValue()

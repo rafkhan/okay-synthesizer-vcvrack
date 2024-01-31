@@ -139,7 +139,7 @@ struct DebugLowstepperV7Widget : ModuleWidget {
 		//addParam(createParamCentered<RoundBlackKnob>(mm2px(Vec(34.956, 88.736)), module, DebugLowstepperV7::SPEED_TOGGLE_B_PARAM));
 
 		SlowMedFastSwitch* speedA = createParamCentered<SlowMedFastSwitch>(mm2px(Vec(16.154, 88.702)), module, DebugLowstepperV7::SPEED_TOGGLE_A_PARAM);
-		SlowMedFastSwitch* speedB = createParamCentered<SlowMedFastSwitch>(mm2px(Vec(34.956, 88.736)), module, DebugLowstepperV7::SPEED_TOGGLE_B_PARAM);
+		SlowMedFastSwitch* speedB = createParamCentered<SlowMedFastSwitch>(mm2px(Vec(33.656, 88.736)), module, DebugLowstepperV7::SPEED_TOGGLE_B_PARAM);
 
 		addParam(speedA);
 		addParam(speedB);

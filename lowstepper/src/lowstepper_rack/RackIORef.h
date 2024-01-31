@@ -2,7 +2,7 @@
 
 #include <rack.hpp>
 
-struct SlowMedFastSwitch : rack::app::SvgKnob {
+struct SlowMedFastSwitch : rack::app::Knob {
     // copied from src/lowstepper/LowStepperLfo.h
     enum LowStepperLfoMode {
         SLOW,
@@ -10,7 +10,14 @@ struct SlowMedFastSwitch : rack::app::SvgKnob {
         FAST
     };
 
+    rack::widget::FramebufferWidget* fb;
+	//rack::CircularShadow* shadow;
+	//rack::widget::TransformWidget* tw;
+	rack::widget::SvgWidget* sw;
+
     SlowMedFastSwitch();
+
+    void setSvg(std::shared_ptr<rack::window::Svg> svg);
 
     void onChange(const ChangeEvent& e) override;
 

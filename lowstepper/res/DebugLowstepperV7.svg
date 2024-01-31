@@ -23,15 +23,15 @@
      inkscape:pagecheckerboard="1"
      inkscape:deskcolor="#505050"
      inkscape:document-units="mm"
-     inkscape:zoom="1.0520974"
-     inkscape:cx="397.30163"
-     inkscape:cy="561.25984"
+     inkscape:zoom="1.4878904"
+     inkscape:cx="306.47418"
+     inkscape:cy="342.43113"
      inkscape:window-width="2560"
      inkscape:window-height="1377"
      inkscape:window-x="1912"
      inkscape:window-y="-8"
      inkscape:window-maximized="1"
-     inkscape:current-layer="layer1" />
+     inkscape:current-layer="layer2" />
   <defs
      id="defs1" />
   <g
@@ -74,14 +74,13 @@
        rx="0.58724934"
        ry="0.55901957"
        inkscape:label="led_a" />
-    <ellipse
-       style="fill:#ff0000;fill-opacity:1;stroke-width:0.0787432"
+    <circle
+       style="fill:#ff0000;fill-opacity:1;stroke-width:0.0414665"
        id="path2-91"
-       cx="16.153582"
-       cy="88.702019"
-       rx="3.7594404"
-       ry="3.8367996"
-       inkscape:label="speed_toggle_a" />
+       cx="15.594"
+       cy="88.942001"
+       inkscape:label="speed_toggle_a"
+       r="2" />
     <ellipse
        style="fill:#ff00ff;fill-opacity:1;stroke-width:0.0111782"
        id="path2-029"
@@ -90,14 +89,13 @@
        rx="0.54127568"
        ry="0.53702098"
        inkscape:label="led_b" />
-    <ellipse
-       style="fill:#ff0000;fill-opacity:1;stroke-width:0.0787432"
+    <circle
+       style="fill:#ff0000;fill-opacity:1;stroke-width:0.0414665"
        id="path2-04"
-       cx="34.955856"
-       cy="88.735573"
-       rx="3.7594404"
-       ry="3.8367996"
-       inkscape:label="speed_toggle_b" />
+       cx="33.995998"
+       cy="88.942001"
+       inkscape:label="speed_toggle_b"
+       r="2" />
     <ellipse
        style="fill:#00ff00;fill-opacity:1;stroke-width:0.0787432"
        id="path2-09"
