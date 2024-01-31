@@ -1,6 +1,10 @@
 #pragma once
 
+// gold hex:    FFD700
+// purple hex:  6E1DA4
+
 #include <rack.hpp>
+
 
 struct SlowMedFastSwitch : rack::app::Knob {
     // copied from src/lowstepper/LowStepperLfo.h
@@ -26,6 +30,13 @@ struct SlowMedFastSwitch : rack::app::Knob {
     std::shared_ptr<rack::window::Svg> mediumSvg;
     std::shared_ptr<rack::window::Svg> fastSvg;
     LowStepperLfoMode currentMode;
+
+struct GoldPort : rack::app::SvgPort {
+	GoldPort();
+};
+
+struct PurplePort : rack::app::SvgPort {
+	PurplePort();
 };
 
 struct ParamRef {
