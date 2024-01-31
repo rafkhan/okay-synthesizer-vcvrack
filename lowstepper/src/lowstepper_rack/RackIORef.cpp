@@ -1,5 +1,17 @@
 #include "RackIORef.h"
 
+extern rack::Plugin* pluginInstance;
+
+//setSvg(Svg::load(asset::system("res/ComponentLibrary/PJ301M.svg")));
+
+GoldPort::GoldPort() {
+    setSvg(rack::Svg::load(rack::asset::plugin(pluginInstance, "res/components/GoldPort.svg")));
+}
+
+PurplePort::PurplePort() {
+    setSvg(rack::Svg::load(rack::asset::plugin(pluginInstance, "res/components/PurplePort.svg")));
+}
+
 float ParamRef::getValue()
 {
     return param->getValue();
