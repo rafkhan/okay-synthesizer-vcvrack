@@ -135,8 +135,15 @@ struct DebugLowstepperV7Widget : ModuleWidget {
 		addParam(createParamCentered<RoundBlackKnob>(mm2px(Vec(45.201, 43.513)), module, DebugLowstepperV7::START_KNOB_B_PARAM));
 		addParam(createParamCentered<RoundBlackKnob>(mm2px(Vec(4.46, 55.257)), module, DebugLowstepperV7::END_KNOB_A_PARAM));
 		addParam(createParamCentered<RoundBlackKnob>(mm2px(Vec(45.309, 55.375)), module, DebugLowstepperV7::END_KNOB_B_PARAM));
-		addParam(createParamCentered<RoundBlackKnob>(mm2px(Vec(16.154, 88.702)), module, DebugLowstepperV7::SPEED_TOGGLE_A_PARAM));
-		addParam(createParamCentered<RoundBlackKnob>(mm2px(Vec(34.956, 88.736)), module, DebugLowstepperV7::SPEED_TOGGLE_B_PARAM));
+		//addParam(createParamCentered<RoundBlackKnob>(mm2px(Vec(16.154, 88.702)), module, DebugLowstepperV7::SPEED_TOGGLE_A_PARAM));
+		//addParam(createParamCentered<RoundBlackKnob>(mm2px(Vec(34.956, 88.736)), module, DebugLowstepperV7::SPEED_TOGGLE_B_PARAM));
+
+		SlowMedFastSwitch* speedA = createParamCentered<SlowMedFastSwitch>(mm2px(Vec(16.154, 88.702)), module, DebugLowstepperV7::SPEED_TOGGLE_A_PARAM);
+		SlowMedFastSwitch* speedB = createParamCentered<SlowMedFastSwitch>(mm2px(Vec(33.656, 88.736)), module, DebugLowstepperV7::SPEED_TOGGLE_B_PARAM);
+
+		addParam(speedA);
+		addParam(speedB);
+
 
 		addInput(createInputCentered<GoldPort>(mm2px(Vec(15.818, 20.79)), module, DebugLowstepperV7::RATE_CV_A_INPUT));
 		addInput(createInputCentered<PurplePort>(mm2px(Vec(34.006, 20.687)), module, DebugLowstepperV7::RATE_CV_B_INPUT));
