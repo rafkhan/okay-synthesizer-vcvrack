@@ -11,7 +11,7 @@ SlowMedFastSwitch::SlowMedFastSwitch()
     // Load shared_ptr svgs from plugin resources
     // https://github.com/VCVRack/Rack/blob/v2/src/app/SvgKnob.cpp
 
-    this->slowSvg = rack::Svg::load(rack::asset::plugin(pluginInstance, "res/3-way-switch-slow-alt.svg"));
+    this->slowSvg = rack::Svg::load(rack::asset::plugin(pluginInstance, "res/3-way-switch-slow.svg"));
     this->mediumSvg = rack::Svg::load(rack::asset::plugin(pluginInstance, "res/3-way-switch-medium.svg"));
     this->fastSvg = rack::Svg::load(rack::asset::plugin(pluginInstance, "res/3-way-switch-fast.svg"));
 

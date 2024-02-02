@@ -31,6 +31,8 @@ struct SlowMedFastSwitch : rack::app::Knob {
     std::shared_ptr<rack::window::Svg> fastSvg;
     LowStepperLfoMode currentMode;
 
+};
+
 struct GoldPort : rack::app::SvgPort {
 	GoldPort();
 };
