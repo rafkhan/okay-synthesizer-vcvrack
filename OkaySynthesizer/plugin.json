@@ -14,9 +14,9 @@
   "changelogUrl": "",
   "modules": [
     {
-      "slug": "DebugLowstepperV7",
-      "name": "DebugLowstepperV7",
-      "description": "",
+      "slug": "lowstepper",
+      "name": "lowstepper",
+      "description": "Dual phase maniuplation lfo",
       "tags": []
     },
     {

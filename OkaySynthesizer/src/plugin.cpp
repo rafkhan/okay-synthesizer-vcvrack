@@ -7,9 +7,7 @@ Plugin* pluginInstance;
 void init(Plugin* p) {
 	pluginInstance = p;
 	
-	p->addModel(modelDebugLowstepperV7);
-	INFO("loaded debug lowstepper v7");
-
+	p->addModel(modelLowstepper);
 	p->addModel(modelDiscomfort);
 
 	// Any other plugin initialization may go here.
