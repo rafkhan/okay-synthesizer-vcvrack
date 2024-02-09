@@ -1,6 +1,5 @@
 #include "../plugin.hpp"
 
-
 struct Discomfort : Module {
 	enum ParamId {
 		PITCH_PARAM,

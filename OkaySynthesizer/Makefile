@@ -22,6 +22,9 @@ SOURCES += src/lowstepper/lowstepper_rack/LowstepperChannel.cpp
 SOURCES += src/lowstepper/lowstepper_rack/LowstepperRack.cpp
 SOURCES += src/lowstepper/lowstepper_rack/Names.cpp
 SOURCES += src/lowstepper/lowstepper_rack/RackIORef.cpp
+SOURCES += src/lowstepper/DebugLowstepperV7.cpp
+
+SOURCES += src/discomfort/discomfort.cpp
 
 # Add files to the ZIP package when running `make dist`
 # The compiled plugin and "plugin.json" are automatically added.
