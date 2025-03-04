@@ -1,4 +1,5 @@
 #include "../plugin.hpp"
+#include "discomfort/Discomfort.h"
 
 
 struct Discomfort : Module {
