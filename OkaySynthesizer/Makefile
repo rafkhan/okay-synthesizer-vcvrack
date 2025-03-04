@@ -24,6 +24,7 @@ SOURCES += src/lowstepper/lowstepper_rack/Names.cpp
 SOURCES += src/lowstepper/lowstepper_rack/RackIORef.cpp
 SOURCES += src/lowstepper/lowstepper_module.cpp
 
+SOURCES += src/discomfort/discomfort.cpp
 SOURCES += $(wildcard src/discomfort/discomfort/*.cpp)
 
 # SOURCES += src/discomfort/discomfort.cpp

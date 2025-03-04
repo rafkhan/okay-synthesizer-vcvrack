@@ -6,16 +6,16 @@
 #include "DryWet.h"
 #include "DiscomfortInput.h"
 
-Discomfort::Discomfort() {}
+DiscomfortInternal::DiscomfortInternal() {}
 
-void Discomfort::init(float sampleRate)
+void DiscomfortInternal::init(float sampleRate)
 {
   this->follower = new Follower(sampleRate, 1.0f, 1.0f);
   // this->filterBank = new FilterBank(sampleRate);
   // noise.Init();
 }
 
-DiscomfortOutput Discomfort::process(DiscomfortInput input)
+DiscomfortOutput DiscomfortInternal::process(DiscomfortInput input)
 {
   // Add envelope gain!!!
   float followerAmplitude = this->follower->process(input.input * input.envGain, input.attack, input.decay);
@@ -30,7 +30,7 @@ DiscomfortOutput Discomfort::process(DiscomfortInput input)
   return this->createOutput(output * 0.7, followerAmplitude);
 }
 
-DiscomfortOutput Discomfort::createOutput(float audio, float follower)
+DiscomfortOutput DiscomfortInternal::createOutput(float audio, float follower)
 {
   DiscomfortOutput dcOutput;
   dcOutput.audioOutput = audio;

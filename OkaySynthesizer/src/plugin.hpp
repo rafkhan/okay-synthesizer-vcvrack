@@ -9,5 +9,5 @@ extern Plugin* pluginInstance;
 
 // Declare each Model, defined in each module source file
 // extern Model* modelMyModule;
-// extern Model* modelDiscomfort;
+extern Model* modelDiscomfort;
 extern Model* modelLowstepper;

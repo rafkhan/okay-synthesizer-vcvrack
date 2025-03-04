@@ -13,9 +13,9 @@ struct DiscomfortOutput {
   float followerOutput;
 };
 
-class Discomfort {
+class DiscomfortInternal {
   public:
-    Discomfort();
+    DiscomfortInternal();
     void init(float sampleRate);
     DiscomfortOutput process(DiscomfortInput input);
     static DiscomfortOutput createOutput(float audio, float follower);
