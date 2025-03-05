@@ -3,12 +3,16 @@ RACK_DIR ?= ../..
 
 # FLAGS will be passed to both the C and C++ compiler
 FLAGS +=
+LIB_DAISY_INC_DIR = ../DaisySP/Source
 CFLAGS +=
-CXXFLAGS +=
+CXXFLAGS += -I$(LIB_DAISY_INC_DIR)
+
+LIB_DAISY_PATH = ../DaisySP/build
+LIB_DAISY_NAME = libdaisysp.a
 
 # Careful about linking to shared libraries, since you can't assume much about the user's environment and library search path.
 # Static libraries are fine, but they should be added to this plugin's build system.
-LDFLAGS +=
+LDFLAGS += -L$(LIB_DAISY_PATH) -I$(LIB_DAISY_NAME)
 
 # Add .cpp files to the build
 SOURCES += $(wildcard src/*.cpp)
