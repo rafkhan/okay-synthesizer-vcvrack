@@ -21,7 +21,8 @@
             "name": "Mac",
             "includePath": [
                 "${workspaceFolder}/../Rack-SDK/include/**",
-                "${workspaceFolder}/../Rack-SDK/dep/**"
+                "${workspaceFolder}/../Rack-SDK/dep/**",
+                "${workspaceFolder}/DaisySP/Source"
             ],
             "defines": [
                 "_DEBUG",

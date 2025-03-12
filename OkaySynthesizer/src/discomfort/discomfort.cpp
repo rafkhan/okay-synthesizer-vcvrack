@@ -1,4 +1,5 @@
 #include "../plugin.hpp"
+#include "DiscomfortInternal/DiscomfortInternal.h"
 
 
 struct Discomfort : Module {
@@ -73,6 +74,9 @@ struct Discomfort : Module {
 		configInput(FOLD_C_CV_INPUT, "");
 		configInput(DIST_C_CV_INPUT, "");
 		configOutput(ENV_OUT_OUTPUT, "");
+
+		// DiscomfortInternal discomfortInternal;
+		// discomfortInternal.init(10000);
 	}
 
 	void process(const ProcessArgs& args) override {
