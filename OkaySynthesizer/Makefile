@@ -3,7 +3,7 @@ RACK_DIR ?= ../..
 
 # FLAGS will be passed to both the C and C++ compiler
 FLAGS +=
-LIB_DAISY_INC_DIR = DaisySP/Source
+LIB_DAISY_INC_DIR = src/DaisySP/Source
 CFLAGS +=
 CXXFLAGS += -I$(LIB_DAISY_INC_DIR)
 
