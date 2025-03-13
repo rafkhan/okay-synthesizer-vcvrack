@@ -1,5 +1,9 @@
 #include "../plugin.hpp"
 #include "DiscomfortInternal/DiscomfortInternal.h"
+#include "../RackUtils.h"
+#include "daisysp.h"
+
+using namespace daisysp;
 
 struct Discomfort : Module
 {
@@ -97,7 +101,7 @@ struct Discomfort : Module
 		DiscomfortInput input = DiscomfortInput::create();
 		input.input = inputs[IN_L_INPUT].getVoltage();
 		input.setFolderValues(
-			params[FOLD_C_KNOB_PARAM].getValue(),
+			fclamp(params[FOLD_C_KNOB_PARAM].getValue() + rackCvToInternal(inputs[FOLD_C_CV_INPUT].getVoltage()), 0, 1),
 			params[FOLD_B_KNOB_PARAM].getValue(),
 			params[FOLD_A_KNOB_PARAM].getValue(),
 			params[DIST_MIX_KNOB_PARAM].getValue()
