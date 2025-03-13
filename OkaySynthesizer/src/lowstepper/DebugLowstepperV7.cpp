@@ -78,7 +78,7 @@ struct DebugLowstepperV7 : Module {
 	}
 
 	void process(const ProcessArgs& args) override {
-	    if(lowstepper == nullptr) {
+		if(lowstepper == nullptr) {
 			lowstepper = new LowstepperRack(args.sampleRate);
 
 			lowstepper->bindRateKnob(ChannelId::A, &getParam(RATE_KNOB_A_PARAM));

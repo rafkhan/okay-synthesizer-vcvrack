@@ -1,9 +1,10 @@
 #include "../plugin.hpp"
 #include "DiscomfortInternal/DiscomfortInternal.h"
 
-
-struct Discomfort : Module {
-	enum ParamId {
+struct Discomfort : Module
+{
+	enum ParamId
+	{
 		IN_GAIN_PARAM,
 		FOLD_MIX_KNOB_PARAM,
 		DIST_MIX_KNOB_PARAM,
@@ -21,7 +22,8 @@ struct Discomfort : Module {
 		DIST_ENV_CV_PARAM,
 		PARAMS_LEN
 	};
-	enum InputId {
+	enum InputId
+	{
 		IN_L_INPUT,
 		IN_R_INPUT,
 		FOLD_MIX_CV_INPUT,
@@ -36,15 +38,20 @@ struct Discomfort : Module {
 		DIST_C_CV_INPUT,
 		INPUTS_LEN
 	};
-	enum OutputId {
+	enum OutputId
+	{
 		ENV_OUT_OUTPUT,
 		OUTPUTS_LEN
 	};
-	enum LightId {
+	enum LightId
+	{
 		LIGHTS_LEN
 	};
 
-	Discomfort() {
+	DiscomfortInternal *discomfortInternal;
+
+	Discomfort()
+	{
 		config(PARAMS_LEN, INPUTS_LEN, OUTPUTS_LEN, LIGHTS_LEN);
 		configParam(IN_GAIN_PARAM, 0.f, 1.f, 0.f, "");
 		configParam(FOLD_MIX_KNOB_PARAM, 0.f, 1.f, 0.f, "");
@@ -75,17 +82,40 @@ struct Discomfort : Module {
 		configInput(DIST_C_CV_INPUT, "");
 		configOutput(ENV_OUT_OUTPUT, "");
 
-		// DiscomfortInternal discomfortInternal;
-		// discomfortInternal.init(10000);
+		discomfortInternal = new DiscomfortInternal();
+		discomfortInternal->init(APP->engine->getSampleRate());
 	}
 
-	void process(const ProcessArgs& args) override {
+	void onSampleRateChange(const SampleRateChangeEvent &e)
+	{
+		DiscomfortInternal discomfortInternal;
+		discomfortInternal.init(e.sampleRate);
+	}
+
+	void process(const ProcessArgs &args) override
+	{
+		DiscomfortInput input = DiscomfortInput::create();
+		input.input = inputs[IN_L_INPUT].getVoltage();
+		input.setFolderValues(
+			params[FOLD_C_KNOB_PARAM].getValue(),
+			params[FOLD_B_KNOB_PARAM].getValue(),
+			params[FOLD_A_KNOB_PARAM].getValue(),
+			params[DIST_MIX_KNOB_PARAM].getValue()
+		);
+		DiscomfortOutput output = discomfortInternal->process(input);
+		outputs[ENV_OUT_OUTPUT].setVoltage(output.audioOutput);
+	}
+
+	~Discomfort()
+	{
+		delete discomfortInternal;
 	}
 };
 
-
-struct DiscomfortWidget : ModuleWidget {
-	DiscomfortWidget(Discomfort* module) {
+struct DiscomfortWidget : ModuleWidget
+{
+	DiscomfortWidget(Discomfort *module)
+	{
 		setModule(module);
 		setPanel(createPanel(asset::plugin(pluginInstance, "res/discomfort.svg")));
 
@@ -127,5 +157,4 @@ struct DiscomfortWidget : ModuleWidget {
 	}
 };
 
-
-Model* modelDiscomfort = createModel<Discomfort, DiscomfortWidget>("discomfort");
+Model *modelDiscomfort = createModel<Discomfort, DiscomfortWidget>("discomfort");

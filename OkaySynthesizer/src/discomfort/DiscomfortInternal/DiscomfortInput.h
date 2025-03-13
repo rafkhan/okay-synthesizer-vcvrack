@@ -38,8 +38,8 @@ public:
   void setFolderValues(float gain, float offset, float symmetry, float dryWet)
   {
     this->foldGain = map(gain, 0, 1, FOLDER_MIN_GAIN, FOLDER_MAX_GAIN);
-    // this->foldOffset = map(offset, -1, 1, FOLDER_MIN_OFFSET, FOLDER_MAX_OFFSET);
-    // this->foldSymmetry = map(symmetry, -1, 1, FOLDER_MIN_SYMMETRY, FOLDER_MAX_SYMMETRY);
+    this->foldOffset = map(offset, 0, 1, FOLDER_MIN_OFFSET, FOLDER_MAX_OFFSET);
+    this->foldSymmetry = map(symmetry, 0, 1, FOLDER_MIN_SYMMETRY, FOLDER_MAX_SYMMETRY);
     this->foldDryWet = dryWet;
   }
 

@@ -28,8 +28,8 @@ SOURCES += src/lowstepper/lowstepper_rack/Names.cpp
 SOURCES += src/lowstepper/lowstepper_rack/RackIORef.cpp
 SOURCES += src/lowstepper/lowstepper_module.cpp
 
-# SOURCES += $(wildcard src/discomfort/*.cpp)
-# SOURCES += $(wildcard src/discomfort/DiscomfortInternal/*.cpp)
+SOURCES += $(wildcard src/discomfort/*.cpp)
+SOURCES += $(wildcard src/discomfort/DiscomfortInternal/*.cpp)
 
 # DaisySP
 # TODO this is maybe the worst imaginable way to do this

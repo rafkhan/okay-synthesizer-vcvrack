@@ -23,11 +23,12 @@ DiscomfortOutput DiscomfortInternal::process(DiscomfortInput input)
   float gainStagedInput = input.input * input.inputGain;
   float foldOut = Folder::fold(gainStagedInput, input.foldGain, input.foldOffset, input.foldSymmetry);
   float foldBlend = DryWet::blend(gainStagedInput, foldOut, pow(input.foldDryWet, 2));
-  float clippedOut = Clipper::clip(foldBlend, input.clipperGain, input.clipperBend);
-  float clippedBlend = DryWet::blend(foldBlend, clippedOut, pow(input.clipperDryWet, 2));
-  float output = clippedBlend * input.outputGain;
+  // float clippedOut = Clipper::clip(foldBlend, input.clipperGain, input.clipperBend);
+  // float clippedBlend = DryWet::blend(foldBlend, clippedOut, pow(input.clipperDryWet, 2));
+  // float output = clippedBlend * input.outputGain;
+  // return this->createOutput(output * 0.7, followerAmplitude);
 
-  return this->createOutput(output * 0.7, followerAmplitude);
+  return this->createOutput(foldBlend, 1);
 }
 
 DiscomfortOutput DiscomfortInternal::createOutput(float audio, float follower)
