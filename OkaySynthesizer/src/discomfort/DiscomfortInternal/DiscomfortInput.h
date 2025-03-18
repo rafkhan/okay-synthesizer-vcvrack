@@ -7,6 +7,11 @@
 #include "FilterBank.h"
 #include "util.h"
 
+#define INPUT_MIN_GAIN 0
+#define INPUT_MAX_GAIN 5
+#define OUTPUT_MIN_GAIN 0
+#define OUTPUT_MAX_GAIN 5
+
 class DiscomfortInput
 {
 public:
@@ -35,6 +40,12 @@ public:
   float foldDryWet;
   float clipperDryWet;
 
+  void setGainValues(float inputGain, float outputGain)
+  {
+    this->inputGain = map(inputGain, 0, 1, INPUT_MIN_GAIN, INPUT_MAX_GAIN);
+    this->outputGain = map(outputGain, 0, 1, OUTPUT_MIN_GAIN, OUTPUT_MAX_GAIN);
+  }
+
   void setFolderValues(float gain, float offset, float symmetry, float dryWet)
   {
     this->foldGain = map(gain, 0, 1, FOLDER_MIN_GAIN, FOLDER_MAX_GAIN);
@@ -48,6 +59,13 @@ public:
     this->clipperGain = map(gain, 0, 1, CLIPPER_MIN_GAIN, CLIPPER_MAX_GAIN);
     this->clipperBend = map(bend, 0, 1, CLIPPER_MIN_BEND, CLIPPER_MAX_BEND);
     this->clipperDryWet = dryWet;
+  }
+
+  void setEnvFollowerValues(float attack, float decay, float envGain)
+  {
+    this->attack = map(attack, 0, 1, ENV_ATTACK_MIN, ENV_ATTACK_MAX);
+    this->decay = map(decay, 0, 1, ENV_DECAY_MIN, ENV_DECAY_MAX);
+    this->envGain = map(envGain, 0, 1, ENV_GAIN_MIN, ENV_GAIN_MAX);
   }
 
   // void setEnvelopeValues(float gain, float attack, float decay) {

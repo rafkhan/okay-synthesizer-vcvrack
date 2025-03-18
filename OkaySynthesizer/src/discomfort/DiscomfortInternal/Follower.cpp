@@ -24,6 +24,8 @@ Follower::Follower(float sampleRate, float attackMs, float decayMs) {
 float Follower::process(float x, float attackMs, float decayMs) {
   // this->a_ = msToSamples(this->sampleRate, attackMs);
   // this->b_ = msToSamples(this->sampleRate, decayMs);
+  this->a_ = attackMs;
+  this->b_ = decayMs;
   const auto abs_x = abs(x);
   if (abs_x > y_) {
     y_ = a_ * y_ + (1 - a_) * abs_x;
