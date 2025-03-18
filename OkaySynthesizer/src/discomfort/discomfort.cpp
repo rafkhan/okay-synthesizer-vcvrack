@@ -120,6 +120,13 @@ struct Discomfort : Module {
 			fclamp(params[FOLD_MIX_KNOB_PARAM].getValue() + rackCvToInternal(inputs[FOLD_MIX_POT_INPUT].getVoltage()), 0, 1)
 		);
 
+		input.setDistValues(
+			fclamp(params[DIST_A_KNOB_PARAM].getValue() + rackCvToInternal(inputs[DIST_A_CV_INPUT].getVoltage()), 0, 1),
+			fclamp(params[DIST_B_KNOB_PARAM].getValue() + rackCvToInternal(inputs[DIST_B_CV_INPUT].getVoltage()), 0, 1),
+			fclamp(params[DIST_C_KNOB_PARAM].getValue() + rackCvToInternal(inputs[DIST_C_CV_INPUT].getVoltage()), 0, 1),
+			fclamp(params[DIST_MIX_KNOB_PARAM].getValue() + rackCvToInternal(inputs[DIST_MIX_POT_INPUT].getVoltage()), 0, 1)
+		);
+
 		input.setEnvFollowerValues(
 			params[ENV_ATTACK_PARAM].getValue(),
 			params[ENV_DECAY_PARAM].getValue(),

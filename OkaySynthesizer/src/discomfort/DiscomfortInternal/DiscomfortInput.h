@@ -24,9 +24,10 @@ public:
   float foldOffset;   // -1 ... +1
   float foldSymmetry; // -1 ... +1
 
-  // Clipper
-  float clipperGain;
-  float clipperBend;
+  // Distortion
+  float distA;
+  float distB;
+  float distC;
   ClipperType clipperType;
 
   // Crush
@@ -38,7 +39,7 @@ public:
   float envGain;
 
   float foldDryWet;
-  float clipperDryWet;
+  float distDryWet;
 
   void setGainValues(float inputGain, float outputGain)
   {
@@ -54,11 +55,12 @@ public:
     this->foldDryWet = dryWet;
   }
 
-  void setClipperValues(float gain, float bend, float dryWet)
+  void setDistValues(float a, float b, float c, float mix)
   {
-    this->clipperGain = map(gain, 0, 1, CLIPPER_MIN_GAIN, CLIPPER_MAX_GAIN);
-    this->clipperBend = map(bend, 0, 1, CLIPPER_MIN_BEND, CLIPPER_MAX_BEND);
-    this->clipperDryWet = dryWet;
+    this->distA = a;
+    this->distB = b;
+    this->distC = c;
+    this->distDryWet = mix;
   }
 
   void setEnvFollowerValues(float attack, float decay, float envGain)
@@ -83,15 +85,16 @@ public:
     dcInput.foldGain = FOLDER_MIN_GAIN;
     dcInput.foldOffset = 0;
     dcInput.foldSymmetry = 0;
-    dcInput.clipperGain = CLIPPER_MIN_GAIN;
-    dcInput.clipperBend = 0;
+    dcInput.distC = 0;
+    dcInput.distA = 0;
+    dcInput.distB = 0;
     dcInput.clipperType = CLIPPER_SOFT;
     dcInput.crushValue = 0;
     dcInput.attack = 1;
     dcInput.decay = 50;
     dcInput.envGain = 1;
     dcInput.foldDryWet = 0;
-    dcInput.clipperDryWet = 0;
+    dcInput.distDryWet = 0;
 
     return dcInput;
   }

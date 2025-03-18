@@ -24,6 +24,7 @@ class DiscomfortInternal {
     Follower *follower;
     FilterBank *filterBank;
     WhiteNoise noise;
+    Particle noiseParticle;
 };
 
 #endif

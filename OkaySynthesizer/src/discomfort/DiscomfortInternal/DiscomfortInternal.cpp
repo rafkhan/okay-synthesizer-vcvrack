@@ -13,6 +13,7 @@ void DiscomfortInternal::init(float sampleRate)
   this->follower = new Follower(sampleRate, 1.0f, 1.0f);
   this->filterBank = new FilterBank(sampleRate);
   noise.Init();
+  noiseParticle.Init(sampleRate);
 }
 
 DiscomfortOutput DiscomfortInternal::process(DiscomfortInput input)
@@ -23,9 +24,19 @@ DiscomfortOutput DiscomfortInternal::process(DiscomfortInput input)
 
   float foldOut = Folder::fold(gainStagedInput, input.foldGain, input.foldOffset, input.foldSymmetry);
   float foldBlend = DryWet::blend(gainStagedInput, foldOut, pow(input.foldDryWet, 2));
+
+  noiseParticle.SetSpread(map(fclamp(input.distA, 0, 1), 0, 1, 0, 100));
+  noiseParticle.SetResonance(fclamp(input.distB, 0, 1));
+  noiseParticle.SetFreq(map(input.distC, 0, 1, 20, 10000));
+  float noiseOut = noiseParticle.Process();
+  // float noiseOut = noiseParticle.GetNoise();
+  // this->noise.SetAmp(input.distC);
+  // float n = this->noise.Process();
+
   // float clippedOut = Clipper::clip(foldBlend, input.clipperGain, input.clipperBend);
-  // float clippedBlend = DryWet::blend(foldBlend, clippedOut, pow(input.clipperDryWet, 2));
-  float output = foldBlend * input.outputGain;
+  // float noiseBlend = DryWet::blend(foldBlend, noiseOut, pow(input.distDryWet, 2));
+  float noiseBlend = foldBlend + (noiseOut * input.distDryWet);
+  float output = noiseBlend * input.outputGain;
   // return this->createOutput(output * 0.7, followerAmplitude);
 
   return this->createOutput(output, followerAmplitude);
