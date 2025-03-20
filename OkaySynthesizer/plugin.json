@@ -18,12 +18,6 @@
       "name": "lowstepper",
       "description": "Dual phase maniuplation lfo",
       "tags": []
-    },
-    {
-      "slug": "discomfort",
-      "name": "discomfort",
-      "description": "discomfort",
-      "tags": []
     }
   ]
 }
