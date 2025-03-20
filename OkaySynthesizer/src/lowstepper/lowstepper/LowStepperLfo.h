@@ -40,6 +40,7 @@ class LowStepperLfo
   public:
     LowStepperLfo(float sampleRate);
     LowStepperOutput tick(LowStepperInput);
+    void updateSampleRate(float sampleRate);
 
     static float mapRateInputToFrequency(float input, bool enableSync, LowStepperLfoMode speed, float bpm); // Convert 0-1 value to frequency
     static float mapMorphInput(float input);

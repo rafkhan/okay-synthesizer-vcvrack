@@ -335,3 +335,11 @@ bool LowstepperRack::resetBTriggerCheck()
     }
     return channelB.resetTrigger.triggerCheck();
 }
+
+void LowstepperRack::updateSampleRate(float sampleRate)
+{
+    channelA.lfo.updateSampleRate(sampleRate);
+    channelB.lfo.updateSampleRate(sampleRate);
+    channelA.syncManager.init(sampleRate);
+    channelB.syncManager.init(sampleRate);
+}

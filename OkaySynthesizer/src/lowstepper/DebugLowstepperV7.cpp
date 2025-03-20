@@ -77,8 +77,13 @@ struct DebugLowstepperV7 : Module {
 		lowstepper = nullptr;
 	}
 
+
+	void onSampleRateChange(const SampleRateChangeEvent &e) override {
+		lowstepper->updateSampleRate(e.sampleRate);
+	}	
+
 	void process(const ProcessArgs& args) override {
-	    if(lowstepper == nullptr) {
+		if(lowstepper == nullptr) {
 			lowstepper = new LowstepperRack(args.sampleRate);
 
 			lowstepper->bindRateKnob(ChannelId::A, &getParam(RATE_KNOB_A_PARAM));
@@ -115,7 +120,6 @@ struct DebugLowstepperV7 : Module {
 		lowstepper->tick(args);
 	}
 };
-
 
 struct DebugLowstepperV7Widget : ModuleWidget {
 	DebugLowstepperV7Widget(DebugLowstepperV7* module) {
