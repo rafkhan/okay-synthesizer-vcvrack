@@ -23,6 +23,7 @@ public:
     void bindEocOut(ChannelId id, rack::engine::Output* output);
 
     void tick(const rack::engine::Module::ProcessArgs& args);
+    void updateSampleRate(float sampleRate);
 
 private:
     static float combinePotAndCv(float pot, float cv);
