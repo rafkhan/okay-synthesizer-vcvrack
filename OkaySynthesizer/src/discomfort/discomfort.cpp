@@ -73,10 +73,10 @@ struct Discomfort : Module {
 		configParam(ENV_GAIN_PARAM, 0.f, 1.f, 0.f, "");
 		configParam(FOLD_B_KNOB_PARAM, 0.f, 1.f, 0.5f, "");
 		configParam(DIST_B_KNOB_PARAM, 0.f, 1.f, 0.f, "");
-		configParam(ENV_ATTACK_PARAM, 0.f, 1.f, 0.f, "");
+		configParam(ENV_ATTACK_PARAM, 0.f, 1.f, 0.1f, "");
 		configParam(FOLD_C_KNOB_PARAM, 0.f, 1.f, 0.f, "");
 		configParam(DIST_C_KNOB_PARAM, 0.f, 1.f, 0.f, "");
-		configParam(ENV_DECAY_PARAM, 0.f, 1.f, 0.f, "");
+		configParam(ENV_DECAY_PARAM, 0.f, 1.f, 0.1f, "");
 		configParam(FOLD_ENV_CV_PARAM, 0.f, 1.f, 0.f, "");
 		configParam(DIST_ENV_CV_PARAM, 0.f, 1.f, 0.f, "");
 		configInput(IN_L_INPUT, "");
@@ -135,7 +135,7 @@ struct Discomfort : Module {
 
 		input.input = rackCvToInternal(inputs[IN_L_INPUT].getVoltage());
 		DiscomfortOutput outputL = discomfortInternalL->process(input);
-		outputs[OUT_L_OUTPUT].setVoltage(outputL.audioOutput);
+		outputs[OUT_L_OUTPUT].setVoltage(input.input);
 		outputs[ENV_OUT_OUTPUT].setVoltage(outputL.followerOutput);
 
 		input.input = rackCvToInternal(inputs[IN_R_INPUT].getVoltage());
