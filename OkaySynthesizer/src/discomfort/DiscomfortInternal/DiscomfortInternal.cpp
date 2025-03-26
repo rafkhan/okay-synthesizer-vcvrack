@@ -24,7 +24,7 @@ float DiscomfortInternal::getFold(float audioIn, DiscomfortInput input)
 
 float DiscomfortInternal::getDist(float audioIn, DiscomfortInput input)
 {
-  float clippedOut = Clipper::clip(audioIn, input.distA, input.distB);
+  float clippedOut = Clipper::clip(audioIn, input.distC, input.distB, input.distA);
   return DryWet::blend(audioIn, clippedOut, input.distDryWet);
 }
 
