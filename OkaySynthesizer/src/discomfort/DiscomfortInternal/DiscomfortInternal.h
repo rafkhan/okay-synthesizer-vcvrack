@@ -7,9 +7,6 @@
 #include "FilterBank.h"
 #include "DiscomfortInput.h"
 
-#define FOLD_MODE_1 1
-#define DIST_MODE_NOISE_PARTICLE 1
-
 using namespace daisysp;
 
 struct DiscomfortOutput {
