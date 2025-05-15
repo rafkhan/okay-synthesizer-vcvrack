@@ -734,7 +734,7 @@
        ry="3.8367996"
        inkscape:label="dist_mix_pot" />
     <ellipse
-       style="fill:#00ff00;fill-opacity:1;stroke-width:0.0787432"
+       style="fill:#0000ff;fill-opacity:1;stroke-width:0.0787432"
        id="path2-09-3-4"
        cx="69.501877"
        cy="22.619968"
@@ -748,9 +748,9 @@
        cy="22.619968"
        rx="2.634223"
        ry="2.6884282"
-       inkscape:label="out_L" />
+       inkscape:label="env_out" />
     <ellipse
-       style="fill:#00ff00;fill-opacity:1;stroke-width:0.0787432"
+       style="fill:#0000ff;fill-opacity:1;stroke-width:0.0787432"
        id="path2-09-39-7"
        cx="81.320282"
        cy="22.619968"

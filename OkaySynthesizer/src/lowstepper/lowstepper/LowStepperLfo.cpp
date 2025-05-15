@@ -164,6 +164,10 @@ float LowStepperLfo::mapStartInput(float input, bool enableSync)
 }
 
 LowStepperLfo::LowStepperLfo(float sampleRate) {
+  this->updateSampleRate(sampleRate);
+}
+
+void LowStepperLfo::updateSampleRate(float sampleRate) {
   this->sampleRate = sampleRate;
   this->sampleLength = (1.0f/sampleRate)*1000000.0f;
 }
